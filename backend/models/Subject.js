@@ -1,9 +1,37 @@
-import mongoose from "mongoose";
+import express from "express";
+import Subject from "../models/Subject.js";
 
-const subjectSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
-  title:  { type: String, required: true },
-  color:  { type: String, default: "#6a5af9" }
-}, { timestamps: true });
+const router = express.Router();
 
-export default mongoose.models.Subject || mongoose.model("Subject", subjectSchema);
+// Create subject
+router.post("/", async (req, res) => {
+  try {
+    const { userId, title, color } = req.body;
+
+    if (!userId || !title)
+      return res.status(400).json({ message: "Missing fields" });
+
+    const subject = await Subject.create({ userId, title, color });
+    res.json(subject);
+
+  } catch (err) {
+    console.error("Create subject error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// Get subjects by user
+router.get("/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;   // ✅ FIXED
+
+    const subjects = await Subject.find({ userId }).sort({ createdAt: -1 });
+    res.json(subjects);
+
+  } catch (err) {
+    console.error("Get subjects error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+export default router;
