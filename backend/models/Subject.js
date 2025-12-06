@@ -20,10 +20,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get subjects by user
+// Get subjects
 router.get("/:userId", async (req, res) => {
   try {
-    const userId = req.params.userId;   // ✅ FIXED
+    const userId = req.params.userId;  // ✅ FIXED
 
     const subjects = await Subject.find({ userId }).sort({ createdAt: -1 });
     res.json(subjects);
