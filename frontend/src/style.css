@@ -1,0 +1,103 @@
+:root{
+  --bg:#0b1020;
+  --glass: rgba(255,255,255,0.06);
+  --muted: rgba(255,255,255,0.6);
+  --accent1: #7b61ff;
+  --accent2: #00e0d1;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #05060a 0%, var(--bg) 100%);
+  color: #fff;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+.container{
+  max-width:1000px;
+  margin:40px auto;
+  padding:20px;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+}
+
+.logo{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.logo .mark{
+  width:40px;height:40px;border-radius:10px;
+  background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius:14px;
+  padding:18px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap:20px;
+  margin-top:20px;
+}
+
+.subject-list{ display:flex; flex-direction:column; gap:12px; }
+
+.subject-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px;
+  border-radius:10px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+.btn{
+  padding:8px 12px;
+  border-radius:8px;
+  background: linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#000;
+  font-weight:700;
+  border:none;
+  cursor:pointer;
+}
+
+.small{ font-size:14px; color:var(--muted) }
+
+.form input, .form textarea, .form select{
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+  border-radius:8px;
+  border:none;
+  background: rgba(255,255,255,0.02);
+  color: #fff;
+}
+
+.center {
+  display:flex; flex-direction:column; gap:12px; align-items:center;
+  justify-content:center; height:60vh;
+}
+
+.link { color:var(--accent2); text-decoration:none; font-weight:600; }
+
+.footer {
+  margin-top:30px; text-align:center; color:var(--muted);
+  font-size:13px;
+}
